@@ -46,8 +46,7 @@ select s.id, s.type, s.state, s.area, d.displayName, d.slug, p.profileNumber, p.
   left outer join Attendances a on a.SeatId = s.id and a.DeputyId = d.id
   left outer join Profiles p on p.id = d.id
   group by s.id, s.type, s.state, s.area, d.displayName, d.slug, p.profileNumber, p.status, d.party, d.id,
-	 p.birth, p.startDate, p.building, p.email, p.phone, p.studies, p.academics, p.twitter, p.facebook
-   having count(1)  > 1;
+	 p.birth, p.startDate, p.building, p.email, p.phone, p.studies, p.academics, p.twitter, p.facebook;
 
 -- select * from ProfileDetails;
 

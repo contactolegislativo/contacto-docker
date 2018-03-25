@@ -5,9 +5,9 @@
 Download microservices repositories:
 
 ```
-  git clone git@github.com:wedevelopmx/contacto-cdn.git /service/cdn
-  git clone git@github.com:wedevelopmx/contacto-portal.git /service/portal
-  git clone git@github.com:wedevelopmx/contacto-api.git /service/api
+  git clone git@github.com:contactolegislativo/contacto-cdn.git services/cdn
+  git clone git@github.com:contactolegislativo/contacto-portal.git services/portal
+  git clone git@github.com:contactolegislativo/contacto-api.git services/api
 ```
 
 
