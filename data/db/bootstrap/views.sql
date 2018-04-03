@@ -24,7 +24,7 @@ create table ProfileDetails (
     twitter varchar(255),
     facebook varchar(255),
     attendances integer,
-    latestAttendance date,
+    latestAttendance datetime,
     primary key(id, DeputyId),
     unique (id, DeputyId),
 	index active_profile_index (id, state, slug, attendances, latestAttendance)
@@ -60,7 +60,7 @@ create table ActiveDeputies (
 	id integer primary key,
     type varchar(255),
     state varchar(255),
-    area integer,
+    district integer,
     party varchar(255),
     displayName varchar(255),
 		slug varchar(255),
@@ -71,11 +71,11 @@ create table ActiveDeputies (
     latestAttendances date
 );
 
-insert into ActiveDeputies (id, type, state, area, party, displayName, slug, birth, studies, academics, attendances, latestAttendances)
+insert into ActiveDeputies (id, type, state, district, party, displayName, slug, birth, studies, academics, attendances, latestAttendances)
 select s.id,
 	SUBSTRING_INDEX(GROUP_CONCAT(DISTINCT CAST(s.type AS CHAR) ORDER BY a.attendanceDate desc), ',', 1 ) as type,
     SUBSTRING_INDEX(GROUP_CONCAT(DISTINCT CAST(s.state AS CHAR) ORDER BY a.attendanceDate desc), ',', 1 ) as state,
-    SUBSTRING_INDEX(GROUP_CONCAT(DISTINCT CAST(s.area AS CHAR) ORDER BY a.attendanceDate desc), ',', 1 ) as area,
+    SUBSTRING_INDEX(GROUP_CONCAT(DISTINCT CAST(s.area AS CHAR) ORDER BY a.attendanceDate desc), ',', 1 ) as district,
 	SUBSTRING_INDEX(GROUP_CONCAT(DISTINCT CAST(d.party AS CHAR) ORDER BY a.attendanceDate desc), ',', 1 ) as party,
     SUBSTRING_INDEX(GROUP_CONCAT(DISTINCT CAST(d.displayName AS CHAR) ORDER BY a.attendanceDate desc), ',', 1 ) as displayName,
 		SUBSTRING_INDEX(GROUP_CONCAT(DISTINCT CAST(d.slug AS CHAR) ORDER BY a.attendanceDate desc), ',', 1 ) as slug,
